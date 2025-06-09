@@ -20,4 +20,5 @@ public interface DistrictDetailsRepository extends JpaRepository<DistrictDetails
 
     DistrictDetails findByDistrict_DistId(Integer distId);
 
+
 }

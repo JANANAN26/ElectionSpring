@@ -26,4 +26,9 @@ public class DistrictDetailsController {
     public DistrictDetailsDTO getDistrictDetailsByDistrictId(@PathVariable Integer distId) {
         return service.getDetailsByDistrictId(distId);
     }
+
+    @DeleteMapping("/{distId}")
+    public void deleteDistrictDetails(@PathVariable Integer distId) {
+        service.deleteDistrictDetails(distId);
+    }
 }

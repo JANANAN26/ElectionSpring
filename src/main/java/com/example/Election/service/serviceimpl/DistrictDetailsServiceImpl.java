@@ -75,5 +75,15 @@ public class DistrictDetailsServiceImpl implements DistrictDetailsService {
         );
     }
 
+    @Override
+    public void deleteDistrictDetails(Integer distId) {
+        DistrictDetails entity = districtDetailsRepository.findByDistrict_DistId(distId);
+        if (entity != null) {
+            districtDetailsRepository.delete(entity);
+        } else {
+            throw new RuntimeException("DistrictDetails not found with districtId: " + distId);
+        }
+    }
+
 
 }
