@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/district")
+@RequestMapping("/api/district")
 @CrossOrigin("*")
 public class DistrictController {
 

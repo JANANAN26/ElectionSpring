@@ -30,6 +30,4 @@ public class District {
 
     @OneToMany(mappedBy = "district", cascade = CascadeType.ALL)
     private List<Result> results;
-
-    // Getters and Setters
 }

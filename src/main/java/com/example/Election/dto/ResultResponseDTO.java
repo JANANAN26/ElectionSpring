@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +16,4 @@ public class ResultResponseDTO {
     private Integer rejectVotes;
     private Integer validVotes;
     private List<PartyResultDTO> partyVotes;
-
-    // Getters and setters
 }

@@ -24,5 +24,7 @@ public interface ResultRepository extends JpaRepository<Result, Integer> {
     @Query("SELECT r FROM Result r WHERE r.district.distId = :distId")
     List<Result> findAllByDistrictId(Integer distId);
 
+
+
 }
 

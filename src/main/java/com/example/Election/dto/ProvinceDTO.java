@@ -11,9 +11,4 @@ import lombok.NoArgsConstructor;
 public class ProvinceDTO {
     private Integer provinceId;
     private String provinceName;
-    private Integer yearId;
-    private int districtCount;
-    private int nowDistrictCount;
-
-    // Getters and Setters
 }

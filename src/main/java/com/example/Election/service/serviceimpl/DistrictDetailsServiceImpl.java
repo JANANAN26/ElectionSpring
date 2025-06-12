@@ -43,7 +43,6 @@ public class DistrictDetailsServiceImpl implements DistrictDetailsService {
 
     @Override
     public DistrictDetailsDTO updateDistrictDetails(DistrictDetailsDTO dto) {
-        // Fetch existing DistrictDetails entity using districtdetailsId
         DistrictDetails entity = districtDetailsRepository.findById(dto.getDistrictdetailsId())
                 .orElseThrow(() -> new RuntimeException("DistrictDetails not found with ID: " + dto.getDistrictdetailsId()));
 

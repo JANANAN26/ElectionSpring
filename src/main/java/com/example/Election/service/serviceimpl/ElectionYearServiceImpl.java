@@ -17,24 +17,20 @@ public class ElectionYearServiceImpl implements ElectionYearService {
     private final ElectionYearRepository repo;
 
     private ElectionYearDTO toDTO(ElectionYear e) {
-        return new ElectionYearDTO(
-                e.getYearId(), e.getElectionYear(), e.getProvinceCount(), e.getNowProvinceCount()
-        );
+        return new ElectionYearDTO(e.getYearId(), e.getElectionYear());
     }
 
     private ElectionYear toEntity(ElectionYearDTO dto) {
         ElectionYear e = new ElectionYear();
         e.setElectionYear(dto.getElectionYear());
-        e.setProvinceCount(dto.getProvinceCount() != null ? dto.getProvinceCount() : 0);
-        e.setNowProvinceCount(dto.getNowProvinceCount() != null ? dto.getNowProvinceCount() : 0);
         return e;
     }
 
     @Override
     public ElectionYearDTO addYear(ElectionYearDTO dto) {
-        repo.findByElectionYear(dto.getElectionYear()).ifPresent(e ->
-                { throw new RuntimeException("Election year already exists."); }
-        );
+        repo.findByElectionYear(dto.getElectionYear()).ifPresent(e -> {
+            throw new RuntimeException("Election year already exists.");
+        });
         ElectionYear saved = repo.save(toEntity(dto));
         return toDTO(saved);
     }

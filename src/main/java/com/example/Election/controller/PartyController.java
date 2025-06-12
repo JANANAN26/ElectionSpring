@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/party")
-@CrossOrigin(origins = "http://localhost:5173")  // Same CORS config as before
+@CrossOrigin(origins = "http://localhost:5173")
 public class PartyController {
 
     @Autowired

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-// SriLankaController.java
 @RestController
 @RequestMapping("/api/srilanka")
 @CrossOrigin(origins = "http://localhost:5174")

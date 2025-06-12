@@ -18,19 +18,9 @@ public class Province {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer provinceId;
 
-    @ManyToOne
-    @JoinColumn(name = "yearId", nullable = false)
-    private ElectionYear electionYear;
-
     @Column(nullable = false, unique = true)
     private String provinceName;
 
-    private Integer districtCount;
-    private Integer nowDistrictCount;
-
     @OneToMany(mappedBy = "province", cascade = CascadeType.ALL)
     private List<District> districts;
-
-    // Getters and Setters
-
 }

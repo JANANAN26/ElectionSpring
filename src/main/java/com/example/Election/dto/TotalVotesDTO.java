@@ -13,6 +13,4 @@ public class TotalVotesDTO {
     private int totalValidVotes;
     private int totalRejectVotes;
     private int totalSeats;
-
-    // Getters and setters
 }

@@ -8,5 +8,6 @@ public interface ProvinceService {
     String updateProvince(ProvinceDTO dto);
     ProvinceDTO getProvinceById(Integer id);
     List<ProvinceDTO> getAllProvinces();
-    void updateDistrictCount(int provinceId, int districtCount);
+
+
 }

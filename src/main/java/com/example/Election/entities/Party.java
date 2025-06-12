@@ -25,6 +25,4 @@ public class Party {
 
     @OneToMany(mappedBy = "party", cascade = CascadeType.ALL)
     private List<Result> results;
-
-    // Getters and Setters
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/province")
+@RequestMapping("/api/province")
 @CrossOrigin
 public class ProvinceController {
 
@@ -33,16 +33,5 @@ public class ProvinceController {
     @GetMapping
     public List<ProvinceDTO> getAll() {
         return service.getAllProvinces();
-    }
-
-    @GetMapping("/districtCount")
-    public List<ProvinceDTO> getDistrictCounts() {
-        return service.getAllProvinces();
-    }
-
-    @PostMapping("/districtCount")
-    public String updateDistrictCount(@RequestParam int provinceId, @RequestParam int districtCount) {
-        service.updateDistrictCount(provinceId, districtCount);
-        return "District count updated successfully";
     }
 }

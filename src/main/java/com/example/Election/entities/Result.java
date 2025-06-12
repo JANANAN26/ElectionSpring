@@ -29,6 +29,4 @@ public class Result {
     private Integer firstSeatAllocation;
     private Integer secondSeatAllocation;
     private Integer finalSeatAllocation;
-
-    // Getters and Setters
 }

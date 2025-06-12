@@ -22,6 +22,4 @@ public class DistrictDetails {
 
     private Integer totalVotes;
     private Integer rejectVotes;
-
-    // Getters and Setters
 }

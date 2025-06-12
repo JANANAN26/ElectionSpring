@@ -26,37 +26,31 @@ public class DistrictServiceImpl implements DistrictService {
     public List<DistrictDTO> getAllDistricts() {
         return districtRepo.findAll().stream().map(d -> {
             DistrictDTO dto = new DistrictDTO();
-            BeanUtils.copyProperties(d,dto);
+            dto.setDistId(d.getDistId());
+            dto.setDistrictName(d.getDistrictName());
+            dto.setDistrictSeat(d.getDistrictSeat());
+            dto.setProvinceId(d.getProvince().getProvinceId());
             return dto;
         }).collect(Collectors.toList());
     }
 
     @Override
     public void addDistrict(DistrictDTO dto) {
-        Province province = provinceRepo.findById(dto.getProvinceId()).orElseThrow(() ->
-                new RuntimeException("Province not found with ID: " + dto.getProvinceId()));
+        Province province = provinceRepo.findById(dto.getProvinceId())
+                .orElseThrow(() -> new RuntimeException("Province not found with ID: " + dto.getProvinceId()));
 
-        if (province.getNowDistrictCount() > 0) {
-            District d = new District();
+        District district = new District();
+        district.setDistrictName(dto.getDistrictName());
+        district.setDistrictSeat(dto.getDistrictSeat());
+        district.setProvince(province);
 
-            // Avoid copying ID and provinceId
-            d.setDistrictName(dto.getDistrictName());
-            d.setDistrictSeat(dto.getDistrictSeat());
-            d.setProvince(province); // ✅ properly set province
-
-            districtRepo.save(d);
-
-            province.setNowDistrictCount(province.getNowDistrictCount() - 1);
-            provinceRepo.save(province);
-        } else {
-            throw new RuntimeException("District count limit reached");
-        }
+        districtRepo.save(district);
     }
-
 
     @Override
     public void updateDistrictName(int distId, String districtName) {
-        District d = districtRepo.findById(distId).orElseThrow();
+        District d = districtRepo.findById(distId)
+                .orElseThrow(() -> new RuntimeException("District not found with ID: " + distId));
         d.setDistrictName(districtName);
         districtRepo.save(d);
     }

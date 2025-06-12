@@ -18,9 +18,4 @@ public class ElectionYear {
 
     @Column(nullable = false, unique = true)
     private Integer electionYear;
-
-    private Integer provinceCount = 0;
-
-    private Integer nowProvinceCount = 0;
-
 }
