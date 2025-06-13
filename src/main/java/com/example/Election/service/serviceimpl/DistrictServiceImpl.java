@@ -26,9 +26,7 @@ public class DistrictServiceImpl implements DistrictService {
     public List<DistrictDTO> getAllDistricts() {
         return districtRepo.findAll().stream().map(d -> {
             DistrictDTO dto = new DistrictDTO();
-            dto.setDistId(d.getDistId());
-            dto.setDistrictName(d.getDistrictName());
-            dto.setDistrictSeat(d.getDistrictSeat());
+            BeanUtils.copyProperties(d, dto);
             dto.setProvinceId(d.getProvince().getProvinceId());
             return dto;
         }).collect(Collectors.toList());

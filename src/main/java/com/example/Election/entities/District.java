@@ -1,5 +1,6 @@
 package com.example.Election.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +30,6 @@ public class District {
     private List<DistrictDetails> districtDetails;
 
     @OneToMany(mappedBy = "district", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Result> results;
 }

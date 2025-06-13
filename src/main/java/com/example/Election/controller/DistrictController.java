@@ -1,8 +1,10 @@
 package com.example.Election.controller;
 
+import com.example.Election.dto.ApiResponse;
 import com.example.Election.dto.DistrictDTO;
 import com.example.Election.service.DistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,19 +18,20 @@ public class DistrictController {
     private DistrictService service;
 
     @GetMapping
-    public List<DistrictDTO> getAllDistricts() {
-        return service.getAllDistricts();
+    public ResponseEntity<ApiResponse<List<DistrictDTO>>> getAllDistricts() {
+        List<DistrictDTO> districts = service.getAllDistricts();
+        return ResponseEntity.ok(new ApiResponse<>(true, "Districts fetched successfully", districts));
     }
 
     @PostMapping
-    public String addDistrict(@RequestBody DistrictDTO dto) {
+    public ResponseEntity<ApiResponse<Void>> addDistrict(@RequestBody DistrictDTO dto) {
         service.addDistrict(dto);
-        return "District added successfully";
+        return ResponseEntity.ok(new ApiResponse<>(true, "District added successfully", null));
     }
 
     @PutMapping
-    public String updateDistrict(@RequestParam int distId, @RequestParam String districtName) {
+    public ResponseEntity<ApiResponse<Void>> updateDistrict(@RequestParam int distId, @RequestParam String districtName) {
         service.updateDistrictName(distId, districtName);
-        return "District updated successfully";
+        return ResponseEntity.ok(new ApiResponse<>(true, "District updated successfully", null));
     }
 }
